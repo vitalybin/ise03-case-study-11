@@ -53,6 +53,8 @@ Die Weboberfläche enthält:
 - Panels für **Status**, **Lidar** und **Reset**
 - Formular für **Objektposition lesen** und **Objekt bewegen**
 - Analyse-Panel für die unterstützten Capabilities
+- <img width="1908" height="1058" alt="image" src="https://github.com/user-attachments/assets/a8afe739-b0e3-4eeb-92d2-24fb9e813391" />
+
 
 ## Start
 
