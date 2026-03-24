@@ -1,0 +1,7 @@
+services:
+  vehicle-control:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      VEHICLE_API_BASE_URL: "https://www.interagierende-systeme.de:8000"
