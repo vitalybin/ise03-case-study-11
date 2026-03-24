@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DDD Vehicle Control</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>DDD Vehicle Control Console</h1>
+    <p>Dockerisierte Referenzlösung für die bereitgestellte Fahrzeug-API.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Schrittbewegung</h2>
+      <div class="grid two">
+        <label>Schrittstärke (%)
+          <input id="stepPercent" type="number" min="1" max="100" value="18" />
+        </label>
+        <label>Dauer (ms)
+          <input id="durationMs" type="number" min="100" max="5000" value="450" />
+        </label>
+      </div>
+      <div class="direction-pad">
+        <button data-move="forward">▲ Vorne</button>
+        <div class="row">
+          <button data-move="left">◀ Links</button>
+          <button class="danger" id="stopBtn">■ Stop</button>
+          <button data-move="right">Rechts ▶</button>
+        </div>
+        <button data-move="backward">▼ Hinten</button>
+      </div>
+      <p class="hint">Hinweis: Die API bietet keine direkte Schrittfunktion. Diese Buttons setzen zeitbasierte Bewegungsprofile aus Throttle/Steer zusammen.</p>
+    </section>
+
+    <section class="card">
+      <h2>Feinsteuerung</h2>
+      <div class="grid two">
+        <div>
+          <label for="steerRange">Lenkung: <span id="steerValue">0</span>%</label>
+          <input id="steerRange" type="range" min="-100" max="100" value="0" />
+          <button id="sendSteer">Lenkung senden</button>
+        </div>
+        <div>
+          <label for="throttleRange">Throttle: <span id="throttleValue">0</span>%</label>
+          <input id="throttleRange" type="range" min="-100" max="100" value="0" />
+          <div class="inline-buttons">
+            <button id="sendThrottle">Throttle senden</button>
+            <button class="danger" id="hardStop">Throttle 0</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Analyse der API-Möglichkeiten</h2>
+      <button id="loadCapabilities">Capabilities laden</button>
+      <pre id="capabilitiesOutput"></pre>
+    </section>
+
+    <section class="card">
+      <h2>Sensorik & Status</h2>
+      <div class="inline-buttons">
+        <button id="loadStatus">Status laden</button>
+        <button id="loadLidar">Lidar laden</button>
+        <button class="warn" id="resetBtn">Reset</button>
+      </div>
+      <pre id="statusOutput"></pre>
+    </section>
+
+    <section class="card">
+      <h2>Objektsteuerung</h2>
+      <div class="grid three">
+        <label>Objekt-ID
+          <input id="objectId" type="number" value="4" />
+        </label>
+        <label>X-Verschiebung
+          <input id="objectX" type="number" value="1" />
+        </label>
+        <div class="inline-buttons align-end">
+          <button id="getObject">Position holen</button>
+          <button id="moveObject">Objekt bewegen</button>
+        </div>
+      </div>
+      <pre id="objectOutput"></pre>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
